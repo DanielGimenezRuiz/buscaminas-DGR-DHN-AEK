@@ -1,0 +1,24 @@
+CREATE TABLE ranking(
+    codRanking VARCHAR(3) PRIMARY KEY,
+    id INT(11),
+    puntuacion INT(20),
+    codJuego VARCHAR(3),
+    CONSTRAINT PK_jugador FOREIGN KEY(id) REFERENCES jugador(id),
+    CONSTRAINT PK_juego FOREIGN KEY(codJuego) REFERENCES juego(codJuego)
+);
+
+CREATE TABLE jugador(
+    id INT(11) PRIMARY KEY,
+    nombre VARCHAR(20)
+);
+
+CREATE TABLE juego(
+    codJuego VARCHAR(3) PRIMARY KEY,
+    tiempo TIMESTAMP,
+    dificultad ENUM ('FACIL', 'MEDIO', 'DIFÍCIL'),
+    puntuacion INT(20),
+    progreso DOUBLE(5,2),
+    estado boolean,
+    id INT(11),
+    CONSTRAINT PK_JUGADOR FOREIGN KEY(id) REFERENCES jugador(id)
+);
