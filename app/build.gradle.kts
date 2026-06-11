@@ -6,7 +6,7 @@
  */
 
 plugins {
-    // Apply the application plugin to add support for building a CLI application in Java.
+    // Apply the application plugin to add support for building a Java application.
     application
 }
 
@@ -15,11 +15,20 @@ repositories {
     mavenCentral()
 }
 
+val javafxVersion = "21"
+val javafxPlatform = "win"
+
 dependencies {
     // Use JUnit Jupiter for testing.
     testImplementation(libs.junit.jupiter)
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+    // JavaFX dependencies for Windows.
+    implementation("org.openjfx:javafx-base:$javafxVersion:$javafxPlatform")
+    implementation("org.openjfx:javafx-graphics:$javafxVersion:$javafxPlatform")
+    implementation("org.openjfx:javafx-controls:$javafxVersion:$javafxPlatform")
+    implementation("org.openjfx:javafx-fxml:$javafxVersion:$javafxPlatform")
 
     // This dependency is used by the application.
     implementation(libs.guava)
@@ -33,8 +42,9 @@ java {
 }
 
 application {
-    // Define the main class for the application.
-    mainClass = "org.example.App"
+    // Define the main class and module for the application.
+    mainClass.set("org.buscaminas.App")
+    mainModule.set("org.buscaminas")
 }
 
 tasks.named<Test>("test") {
