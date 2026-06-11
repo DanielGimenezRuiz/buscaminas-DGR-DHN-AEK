@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscaminas</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .config-juego {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            background-color: #1a1d29;
+            border-radius: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .select-dificultad {
+            background-color: #0f111a;
+            color: #00bfff;
+            border: 2px solid #00bfff;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            margin-top: 15px;
+            cursor: pointer;
+            outline: none;
+            width: 80%;
+            text-align: center;
+        }
+        .select-dificultad option {
+            background-color: #1a1d29;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <header>
+            <div class="logo">
+                <span class="bomba-icon">💣</span>
+            </div>
+            <nav>
+                <a href="https://www.google.com/search?q=buscaminas" target="_blank">HOME</a>
+                <a href="https://www.google.com/search?q=buscaminas+features" target="_blank">FEATURES</a>
+                <a href="https://www.google.com/search?q=buscaminas+support" target="_blank">SUPPORT</a>
+                <a href="https://www.google.com/search?q=buscaminas+about+us" target="_blank">ABOUT US</a>
+            </nav>
+        </header>
+
+        <section class="sub-header">
+            <div class="titulo">
+                <h1>BUSCAMINAS</h1>
+            </div>
+            <div class="barra">
+                <div class="search-container">
+                    <span>🔎</span>
+                    <input type="text" id="buscador" placeholder="Buscar versiones, juegos, tutoriales...">
+                </div>
+            </div>
+        </section>
+
+        <main class="contenido-principal">
+            
+            <div class="info">
+                <p>Buscaminas (en inglés: Minesweeper) es un videojuego para un jugador inventado en 1989. El juego ha sido programado para muchos sistemas operativos, pero debe su popularidad a las versiones que vienen con Microsoft Windows desde su velocidad 3.1.</p>
+                <p>El juego posee un sistema de récords para cada uno de los 4 niveles en el que se indica el menor tiempo en terminar el juego. Los niveles son (para las nuevas versiones):</p>
+                <ul>
+                    <li><strong>Nivel principiante:</strong> 8 × 8 casillas y 10 minas.</li>
+                    <li><strong>Nivel intermedio:</strong> 16 × 16 casillas y 40 minas.</li>
+                    <li><strong>Nivel experto:</strong> 16 × 30 casillas y 99 minas.</li>
+                    <li><strong>Nivel personalizado:</strong> en este caso el usuario personaliza su juego eligiendo el número de minas y el tamaño de la cuadrícula.</li>
+                </ul>
+            </div>
+
+            <div class="botones">
+                <button class="btn-jugar" id="botonJugarJava">JUGAR AHORA</button>
+                
+                <div id="espacio-selector-medio" style="width: 100%;"></div>
+                
+                <a href="https://youtu.be/PqA7yQcAZVc?si=y2-xhyVf-1pLzHSZ" class="btn-tutorial" target="_blank">VER TUTORIAL</a>
+            </div>
+            
+            <div class="imagen" id="contenedor-principal">
+                <img id="imagen-buscaminas" src="Buscaminas1.png" alt="Captura del juego Buscaminas">
+            </div>
+
+        </main>
+
+        <footer>
+            <p>© Proyecto DAM 2025/2026 - Buscaminas</p>
+            <p>Política de Privacidad | Términos y Condiciones</p>
+            <p>Contacto | Instagram | Twitter | GitHub</p>
+        </footer>
+
+    </div> 
+
+    <div id="result-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div id="modal-emoji" style="font-size: 50px; margin-bottom: 10px;">🎉</div>
+            <h2 id="modal-title" style="margin-bottom: 20px; font-family: Arial, sans-serif; font-weight: bold;">¡Has ganado!</h2>
+            
+            <div class="stats-table">
+                <div class="stat-row"><span>🎯 Dificultad:</span><strong id="stat-diff">-</strong></div>
+                <div class="stat-row"><span>⏱️ Tiempo total:</span><strong id="stat-time">00:00</strong></div>
+                <div class="stat-row"><span>🔲 Celdas reveladas:</span><strong id="stat-cells">0</strong></div>
+                <div class="stat-row"><span>💎 Puntuación:</span><strong id="stat-score" style="color: #00bfff;">0</strong></div>
+            </div>
+
+            <div class="modal-buttons">
+                <button id="modal-btn-restart" class="modal-btn btn-restart">Repetir Nivel</button>
+                <button id="modal-btn-menu" class="modal-btn btn-menu">Cambiar Nivel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
