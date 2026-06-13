@@ -1,121 +1,288 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DocuBuscaminas - 1º DAM</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background-color: #fcfcfc; color: #333; padding: 20px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
-        
-        /* Cabecera */
-        header { text-align: center; margin-top: 20px; margin-bottom: 35px; width: 100%; max-width: 850px; }
-        .logo-container { display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 8px; }
-        .logo-emoji { font-size: 32px; }
-        .logo-text { font-size: 28px; font-weight: 800; color: #2d3748; }
-        .logo-highlight { color: #e056fd; background: linear-gradient(135deg, #e056fd, #3c40c6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .subtitle { font-size: 14px; color: #718096; font-weight: 500; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BUSCAMINAS CONTROL CENTER</title>
 
-        /* Rejilla de Botones/Tarjetas (Igual a la de tus compañeros) */
-        .grid-container { width: 100%; max-width: 850px; display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 18px; margin-bottom: 40px; }
-        
-        /* Estilo de los Botones */
-        .card { display: flex; align-items: center; background: #ffffff; border: 1px solid #edf2f7; border-radius: 12px; padding: 20px; text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
-        .card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px -3px rgba(0, 0, 0, 0.08); border-color: #cbd5e0; }
-        
-        /* Botón destacado de GitHub */
-        .card-highlight { border: 1.5px solid #2d3748; background-color: #fafbfc; }
+<style>
 
-        .card-icon { font-size: 30px; margin-right: 18px; flex-shrink: 0; width: 45px; text-align: center; }
-        .card-content { display: flex; flex-direction: column; }
-        .card-title { font-size: 15px; font-weight: 700; color: #1a202c; margin-bottom: 4px; }
-        .card-desc { font-size: 12px; color: #718096; line-height: 1.4; }
+:root{
+    --bg:#0b1120;
+    --panel:#111827;
+    --panel-hover:#172033;
+    --border:#23304d;
+    --cyan:#00d9ff;
+    --green:#22c55e;
+    --text:#e5e7eb;
+    --muted:#94a3b8;
+}
 
-        footer { margin-top: auto; text-align: center; padding: 25px 0; width: 100%; border-top: 1px solid #edf2f7; }
-        .footer-text { font-size: 12px; color: #a0aec0; }
-    </style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Consolas','Courier New',monospace;
+    min-height:100vh;
+    padding:30px;
+}
+
+/* Fondo tecnológico */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(0,217,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,217,255,.03) 1px, transparent 1px);
+    background-size:40px 40px;
+    pointer-events:none;
+}
+
+.container{
+    max-width:1400px;
+    margin:auto;
+}
+
+.header{
+    border:1px solid var(--border);
+    background:var(--panel);
+    padding:25px;
+    margin-bottom:30px;
+    border-radius:10px;
+    box-shadow:0 0 20px rgba(0,217,255,.08);
+}
+
+.status{
+    color:var(--green);
+    margin-bottom:10px;
+    font-size:.9rem;
+}
+
+.title{
+    color:var(--cyan);
+    font-size:2rem;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    color:var(--muted);
+}
+
+.section{
+    margin-bottom:30px;
+}
+
+.section-title{
+    color:var(--cyan);
+    margin-bottom:15px;
+    padding-bottom:8px;
+    border-bottom:1px solid var(--border);
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:18px;
+}
+
+.card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-left:4px solid var(--cyan);
+    border-radius:8px;
+    padding:20px;
+    text-decoration:none;
+    color:inherit;
+    transition:.25s;
+    position:relative;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    background:var(--panel-hover);
+    box-shadow:0 0 25px rgba(0,217,255,.15);
+}
+
+.card-header{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:12px;
+}
+
+.doc-name{
+    color:white;
+    font-size:1rem;
+    font-weight:bold;
+}
+
+.badge{
+    color:var(--green);
+    font-size:.8rem;
+}
+
+.card p{
+    color:var(--muted);
+    line-height:1.5;
+    font-size:.9rem;
+}
+
+.action{
+    margin-top:15px;
+    color:var(--cyan);
+    font-size:.85rem;
+}
+
+.footer{
+    margin-top:40px;
+    text-align:center;
+    color:var(--muted);
+    border-top:1px solid var(--border);
+    padding-top:20px;
+    font-size:.85rem;
+}
+
+.terminal-line{
+    color:var(--green);
+    margin-bottom:8px;
+}
+
+.cursor{
+    animation:blink 1s infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0;
+    }
+}
+
+</style>
 </head>
+
 <body>
 
-    <header>
-        <div class="logo-container">
-            <span class="logo-emoji">💣</span>
-            <div class="logo-text">Docu<span class="logo-highlight">Buscaminas</span></div>
+<div class="container">
+
+        <div class="title">
+            BUSCAMINAS CONTROL CENTER<span class="cursor">_</span>
         </div>
-        <p class="subtitle">Repositorio oficial de entrega de prácticas y documentación</p>
-    </header>
 
-    <main class="grid-container">
+        <div class="subtitle">
+            Centro de documentación y recursos del proyecto.
+        </div>
+    </div>
 
-        <a href="./Actas_Reunion_Buscaminas.pdf" class="card" target="_blank">
-            <div class="card-icon">📝</div>
-            <div class="card-content">
-                <div class="card-title">Actas de Reunión</div>
-                <div class="card-desc">Registro unificado de las fases, reparto de tareas y firmas del grupo.</div>
-            </div>
-        </a>
+    <section class="section">
+        <h2 class="section-title">Documentación</h2>
 
-        <a href="./Analisis-DGR-DHN-AEK.pdf" class="card" target="_blank">
-            <div class="card-icon">📄</div>
-            <div class="card-content">
-                <div class="card-title">Documento de Análisis</div>
-                <div class="card-desc">Historias de usuario, requisitos funcionales y mecánicas del juego.</div>
-            </div>
-        </a>
+        <div class="grid">
 
-        <a href="./UML.png" class="card" target="_blank">
-            <div class="card-icon">📈</div>
-            <div class="card-content">
-                <div class="card-title">Diagrama de Clases (UML)</div>
-                <div class="card-desc">Estructura del código Java, métodos y relaciones orientadas a objetos.</div>
-            </div>
-        </a>
+            <a href="Actas_Reunion_Buscaminas.pdf" target="_blank" class="card">
+                <div class="card-header">
+                    <span class="doc-name">📄 Actas de Reunión</span>
+                    <span class="badge"></span>
+                </div>
+                <p>Control de asistencia, organización y seguimiento del proyecto.</p>
+                <div class="action">open file →</div>
+            </a>
 
-        <a href="./cronograma.png" class="card" target="_blank">
-            <div class="card-icon">⏳</div>
-            <div class="card-content">
-                <div class="card-title">Cronograma de Trabajo</div>
-                <div class="card-desc">Planificación temporal y reparto de horas del desarrollo.</div>
-            </div>
-        </a>
+            <a href="Analisis-DGR-DHN-AEK.pdf" target="_blank" class="card">
+                <div class="card-header">
+                    <span class="doc-name">📊 Documento de Análisis</span>
+                    <span class="badge"></span>
+                </div>
+                <p>Historias de usuario, requisitos funcionales y casos de uso.</p>
+                <div class="action">open file →</div>
+            </a>
 
-        <a href="./modelo_E-R.png" class="card" target="_blank">
-            <div class="card-icon">🗄️</div>
-            <div class="card-content">
-                <div class="card-title">Modelo Entidad-Relación</div>
-                <div class="card-desc">Diseño inicial de la base de datos SQL para las partidas y rankings.</div>
-            </div>
-        </a>
+            <a href="UML.png" target="_blank" class="card">
+                <div class="card-header">
+                    <span class="doc-name">📐 UML</span>
+                    <span class="badge"></span>
+                </div>
+                <p>Arquitectura del sistema y relaciones entre clases.</p>
+                <div class="action">view diagram →</div>
+            </a>
 
-        <a href="./Modelo relacional.png" class="card" target="_blank">
-            <div class="card-icon">🔗</div>
-            <div class="card-content">
-                <div class="card-title">Modelo Relacional</div>
-                <div class="card-desc">Estructura final de las tablas de datos, claves primarias y foráneas.</div>
-            </div>
-        </a>
+            <a href="cronograma.png" target="_blank" class="card">
+                <div class="card-header">
+                    <span class="doc-name">⏳ Cronograma</span>
+                    <span class="badge"></span>
+                </div>
+                <p>Planificación temporal y gestión de tareas del sprint.</p>
+                <div class="action">view schedule →</div>
+            </a>
 
-        <a href="./Riesgos_Ergonomicos_Uso_Seguro.pdf" class="card" target="_blank">
-            <div class="card-icon">🛡️</div>
-            <div class="card-content">
-                <div class="card-title">Riesgos Ergonómicos y Uso Seguro</div>
-                <div class="card-desc">Manual de buenas prácticas y salud laboral frente al equipo informático.</div>
-            </div>
-        </a>
+        </div>
+    </section>
 
-        <a href="https://github.com/DanielGimenezRuiz/buscaminas-DGR-DHN-AEK" class="card card-highlight" target="_blank">
-            <div class="card-icon">💻</div>
-            <div class="card-content">
-                <div class="card-title">Código Fuente en GitHub</div>
-                <div class="card-desc">Acceso al repositorio principal con el proyecto Java y Gradle.</div>
-            </div>
-        </a>
+    <section class="section">
+        <h2 class="section-title">Base de Datos</h2>
 
-    </main>
+        <div class="grid">
 
-    <footer>
-        <p class="footer-text">Proyecto Buscaminas © 2026 | Desarrollado por Amal El Haouass, Dani Hernández y Dani Giménez</p>
-    </footer>
+            <a href="modelo_E-R.png" target="_blank" class="card">
+                <div class="card-header">
+                    <span class="doc-name">🗄 Modelo E-R</span>
+                    <span class="badge"></span>
+                </div>
+                <p>Diseño conceptual de la base de datos del sistema.</p>
+                <div class="action">view schema →</div>
+            </a>
+
+            <a href="Modelo relacional.png" target="_blank" class="card">
+                <div class="card-header">
+                    <span class="doc-name">🔗 Modelo Relacional</span>
+                    <span class="badge"></span>
+                </div>
+                <p>Tablas, claves primarias y relaciones definitivas.</p>
+                <div class="action">view schema →</div>
+            </a>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Recursos</h2>
+
+        <div class="grid">
+
+            <a href="Riesgos_Ergonomicos_Uso_Seguro.pdf" target="_blank" class="card">
+                <div class="card-header">
+                    <span class="doc-name">🛡 Riesgos Ergonómicos</span>
+                    <span class="badge"></span>
+                </div>
+                <p>Buenas prácticas para el uso seguro de equipos informáticos.</p>
+                <div class="action">open manual →</div>
+            </a>
+
+            <a href="https://github.com/DanielGimenezRuiz/buscaminas-DGR-DHN-AEK" target="_blank" class="card">
+                <div class="card-header">
+                    <span class="doc-name">💻 GitHub Repository</span>
+                    <span class="badge"></span>
+                </div>
+                <p>Repositorio principal del proyecto Buscaminas en Java + Gradle.</p>
+                <div class="action">git clone →</div>
+            </a>
+
+        </div>
+    </section>
+
+    <div class="footer">
+        <p>
+             Proyecto Buscaminas © 2026 | Amal El Haouass Kerroum · Dani Hernández · Dani Giménez</p>
+    </div>
+
+</div>
 
 </body>
 </html>
