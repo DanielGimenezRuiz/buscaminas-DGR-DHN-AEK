@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocuBuscaminas - 1º DAM</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background-color: #fcfcfc; color: #333; padding: 20px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+        
+        /* Cabecera */
+        header { text-align: center; margin-top: 20px; margin-bottom: 35px; width: 100%; max-width: 850px; }
+        .logo-container { display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .logo-emoji { font-size: 32px; }
+        .logo-text { font-size: 28px; font-weight: 800; color: #2d3748; }
+        .logo-highlight { color: #e056fd; background: linear-gradient(135deg, #e056fd, #3c40c6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { font-size: 14px; color: #718096; font-weight: 500; }
+
+        /* Rejilla de Botones/Tarjetas (Igual a la de tus compañeros) */
+        .grid-container { width: 100%; max-width: 850px; display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 18px; margin-bottom: 40px; }
+        
+        /* Estilo de los Botones */
+        .card { display: flex; align-items: center; background: #ffffff; border: 1px solid #edf2f7; border-radius: 12px; padding: 20px; text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px -3px rgba(0, 0, 0, 0.08); border-color: #cbd5e0; }
+        
+        /* Botón destacado de GitHub */
+        .card-highlight { border: 1.5px solid #2d3748; background-color: #fafbfc; }
+
+        .card-icon { font-size: 30px; margin-right: 18px; flex-shrink: 0; width: 45px; text-align: center; }
+        .card-content { display: flex; flex-direction: column; }
+        .card-title { font-size: 15px; font-weight: 700; color: #1a202c; margin-bottom: 4px; }
+        .card-desc { font-size: 12px; color: #718096; line-height: 1.4; }
+
+        footer { margin-top: auto; text-align: center; padding: 25px 0; width: 100%; border-top: 1px solid #edf2f7; }
+        .footer-text { font-size: 12px; color: #a0aec0; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <span class="logo-emoji">💣</span>
+            <div class="logo-text">Docu<span class="logo-highlight">Buscaminas</span></div>
+        </div>
+        <p class="subtitle">Repositorio oficial de entrega de prácticas y documentación</p>
+    </header>
+
+    <main class="grid-container">
+
+        <a href="./Actas_Reunion_Buscaminas.pdf" class="card" target="_blank">
+            <div class="card-icon">📝</div>
+            <div class="card-content">
+                <div class="card-title">Actas de Reunión</div>
+                <div class="card-desc">Registro unificado de las fases, reparto de tareas y firmas del grupo.</div>
+            </div>
+        </a>
+
+        <a href="./Analisis-DGR-DHN-AEK.pdf" class="card" target="_blank">
+            <div class="card-icon">📄</div>
+            <div class="card-content">
+                <div class="card-title">Documento de Análisis</div>
+                <div class="card-desc">Historias de usuario, requisitos funcionales y mecánicas del juego.</div>
+            </div>
+        </a>
+
+        <a href="./UML.png" class="card" target="_blank">
+            <div class="card-icon">📈</div>
+            <div class="card-content">
+                <div class="card-title">Diagrama de Clases (UML)</div>
+                <div class="card-desc">Estructura del código Java, métodos y relaciones orientadas a objetos.</div>
+            </div>
+        </a>
+
+        <a href="./cronograma.png" class="card" target="_blank">
+            <div class="card-icon">⏳</div>
+            <div class="card-content">
+                <div class="card-title">Cronograma de Trabajo</div>
+                <div class="card-desc">Planificación temporal y reparto de horas del desarrollo.</div>
+            </div>
+        </a>
+
+        <a href="./modelo_E-R.png" class="card" target="_blank">
+            <div class="card-icon">🗄️</div>
+            <div class="card-content">
+                <div class="card-title">Modelo Entidad-Relación</div>
+                <div class="card-desc">Diseño inicial de la base de datos SQL para las partidas y rankings.</div>
+            </div>
+        </a>
+
+        <a href="./Modelo relacional.png" class="card" target="_blank">
+            <div class="card-icon">🔗</div>
+            <div class="card-content">
+                <div class="card-title">Modelo Relacional</div>
+                <div class="card-desc">Estructura final de las tablas de datos, claves primarias y foráneas.</div>
+            </div>
+        </a>
+
+        <a href="./Riesgos_Ergonomicos_Uso_Seguro.pdf" class="card" target="_blank">
+            <div class="card-icon">🛡️</div>
+            <div class="card-content">
+                <div class="card-title">Riesgos Ergonómicos y Uso Seguro</div>
+                <div class="card-desc">Manual de buenas prácticas y salud laboral frente al equipo informático.</div>
+            </div>
+        </a>
+
+        <a href="https://github.com/DanielGimenezRuiz/buscaminas-DGR-DHN-AEK" class="card card-highlight" target="_blank">
+            <div class="card-icon">💻</div>
+            <div class="card-content">
+                <div class="card-title">Código Fuente en GitHub</div>
+                <div class="card-desc">Acceso al repositorio principal con el proyecto Java y Gradle.</div>
+            </div>
+        </a>
+
+    </main>
+
+    <footer>
+        <p class="footer-text">Proyecto Buscaminas © 2026 | Desarrollado por Amal El Haouass, Dani Hernández y Dani Giménez</p>
+    </footer>
+
+</body>
+</html>
